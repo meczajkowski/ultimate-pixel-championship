@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #373737;
+}
+
+#app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 375px;
+    height: 755px;
+    margin: 1% auto;
+    background: #0F0F0F;
+    color: white;
+    font-size: 42px;
+}
