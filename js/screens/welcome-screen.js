@@ -29,8 +29,17 @@ export const welcomeScreen = () => {
       return element;
    };
 
+   const welcomeStepDescription = () => {
+      const element = createElementWithAttributes('p', {
+         class: 'welcome-screen__description',
+         textContent: 'Fill out the form to sign up for upcoming tournee.',
+      });
+      return element;
+   };
+
    const welcomeStepWrapper = document.createElement('div');
    welcomeStepWrapper.append(welcomeStepHeading());
+   welcomeStepWrapper.append(welcomeStepDescription());
    welcomeStepWrapper.append(welcomeStepButtonPrimary());
 
    return welcomeStepWrapper;
