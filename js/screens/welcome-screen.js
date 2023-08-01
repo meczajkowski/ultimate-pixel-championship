@@ -37,8 +37,17 @@ export const welcomeScreen = () => {
       return element;
    };
 
+   const welcomeStepImage = () => {
+      const element = createElementWithAttributes('img', {
+         class: 'welcome-screen__image',
+         src: '../../assets/swords.png',
+      });
+      return element;
+   };
+
    const welcomeStepWrapper = document.createElement('div');
    welcomeStepWrapper.append(welcomeStepHeading());
+   welcomeStepWrapper.append(welcomeStepImage());
    welcomeStepWrapper.append(welcomeStepDescription());
    welcomeStepWrapper.append(welcomeStepButtonPrimary());
 

@@ -79,3 +79,8 @@ body {
    line-height: 21px; /* 131.25% */
    margin: 19px 49px 56px;
 }
+
+.welcome-screen__image {
+   display: block;
+   margin: 27px auto 0;
+}
