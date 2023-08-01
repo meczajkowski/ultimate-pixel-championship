@@ -1,21 +1,109 @@
+:root {
+   --primary-color: #da8b14;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
 
 body {
-    background: #373737;
+   background: #373737;
+}
+
+.button {
+   cursor: pointer;
+   display: block;
+   width: 263px;
+   height: 64px;
+   border: none;
+
+   font-family: Germania One;
+   font-size: 18px;
+   line-height: 21px;
+   text-align: center;
+   margin: 0 auto;
+}
+
+.button--primary {
+   background-color: var(--primary-color);
+   background-image: url(./assets/button-frame-primary.svg);
+   background-position: center;
 }
 
 #app {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 375px;
-    height: 755px;
-    margin: 1% auto;
-    background: #0F0F0F;
-    color: white;
-    font-size: 42px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   max-width: 375px;
+   height: 755px;
+   margin: 1% auto;
+   background: #0f0f0f;
+   color: white;
+   font-size: 42px;
+   position: relative;
+   z-index: 1;
+}
+
+#app::after,
+#app::before {
+   content: '';
+   background-image: url(./assets/margin.png);
+   position: absolute;
+   top: 0;
+   z-index: 2;
+   height: 32px;
+   width: 100%;
+}
+
+#app::before {
+   bottom: 0;
+   top: auto;
+   transform: rotate(180deg);
+}
+
+/* welcome screen */
+.welcome-screen__heading {
+   display: block;
+   font-family: Germania One;
+   font-size: 45px;
+   line-height: 42px;
+   text-align: center;
+   letter-spacing: 0em;
+   font-weight: 400;
+}
+
+h1.welcome-screen__heading {
+   margin-top: -45px;
+}
+
+.welcome-screen__heading--span {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   color: var(--primary-color);
+}
+
+.welcome-screen__heading-underline {
+   display: block;
+   height: 4px;
+   width: 256px;
+   background-image: url(./assets/heading-line.svg);
+   background-position: center;
+}
+
+.welcome-screen__description {
+   color: var(--primary-color);
+   text-align: center;
+   font-family: Roboto Mono;
+   font-size: 16px;
+   line-height: 21px; /* 131.25% */
+   margin: 19px 49px 56px;
+}
+
+.welcome-screen__image {
+   display: block;
+   margin: 27px auto 0;
 }
