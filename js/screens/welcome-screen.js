@@ -2,9 +2,11 @@ import { createElementWithAttributes } from '../helpers/createElementWithAttribu
 
 export const welcomeScreen = () => {
    const welcomeStepButtonPrimary = () => {
-      const element = createElementWithAttributes('button', {
+      const element = createElementWithAttributes('a', {
          class: 'button button--primary',
          textContent: 'Choose',
+         href: '/wizard',
+         onclick: 'route()',
       });
       return element;
    };

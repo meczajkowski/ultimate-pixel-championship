@@ -1,5 +1,6 @@
 :root {
    --primary-color: #da8b14;
+   --darkest: #0f0f0f;
 }
 
 * {
@@ -20,10 +21,13 @@ body {
    border: none;
 
    font-family: Germania One;
+   text-decoration: none;
+   color: var(--darkest);
    font-size: 18px;
    line-height: 21px;
    text-align: center;
    margin: 0 auto;
+   padding: 20px 50px;
 }
 
 .button--primary {
