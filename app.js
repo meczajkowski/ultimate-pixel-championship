@@ -1,5 +1,6 @@
 import { welcomeScreen } from './js/screens/welcome-screen.js';
 import { wizardScreen } from './js/screens/wizard-screen.js';
+import { route } from './js/router.js';
 
 document.addEventListener('DOMContentLoaded', () => {
    const app = document.querySelector('#app');
@@ -7,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
    const displayWizardScreen = wizardScreen();
 
    // Display welcome screen
-   app.append(displayWelcomeScreen);
+   // app.append(displayWelcomeScreen);
 
    // Display wizard screen
    // app.append(displayWizardScreen);
