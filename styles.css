@@ -111,3 +111,11 @@ h1.welcome-screen__heading {
    display: block;
    margin: 27px auto 0;
 }
+
+/* Wizard screen */
+.wizard-heading {
+   color: var(--orange, #da8b14);
+   text-align: center;
+   font-size: 30px;
+   line-height: 35px; /* 116.667% */
+}
