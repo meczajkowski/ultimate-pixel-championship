@@ -21,7 +21,11 @@ export const chooseFighterStep = () => {
       return element;
    };
 
-   const chooseFighterStepWrapper = document.createElement('div');
+   // wrapper
+   const chooseFighterStepWrapper = createElementWithAttributes('div', {
+      class: 'wrapper wrapper--choose-fighter-step',
+   });
+
    chooseFighterStepWrapper.append(chooseFighterStepHeading());
    chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
 
