@@ -1,6 +1,7 @@
 import { createElementWithAttributes } from '../../../helpers/createElementWithAttributes.js';
 
 export const chooseFighterStep = () => {
+   // Heading
    const chooseFighterStepHeading = () => {
       const element = createElementWithAttributes('h2', {
          class: 'welcome-screen__heading wizard-heading',
@@ -8,8 +9,21 @@ export const chooseFighterStep = () => {
       });
       return element;
    };
+
+   // Button Primary
+   const chooseFighterStepButtonPrimary = () => {
+      const element = createElementWithAttributes('a', {
+         class: 'button button--primary',
+         textContent: 'Choose',
+         href: '#',
+         onclick: 'route()',
+      });
+      return element;
+   };
+
    const chooseFighterStepWrapper = document.createElement('div');
    chooseFighterStepWrapper.append(chooseFighterStepHeading());
+   chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
 
    return chooseFighterStepWrapper;
 };
