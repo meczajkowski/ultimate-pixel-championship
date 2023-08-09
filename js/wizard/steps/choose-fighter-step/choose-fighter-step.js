@@ -17,6 +17,24 @@ export const chooseFighterStep = () => {
          class: 'fighter-profile',
       });
 
+      const fighterAvatar = () => {
+         const container = createElementWithAttributes('div', {
+            class: 'fighter-profile__avatar',
+         });
+
+         const image = createElementWithAttributes('img', {
+            class: 'fighter-profile__avatar-image',
+            src: '../../../../assets/karen.png',
+         });
+
+         const base = createElementWithAttributes('div', {
+            class: 'fighter-profile__avatar-base',
+         });
+
+         container.append(base, image);
+         return container;
+      };
+
       const fighterName = createElementWithAttributes('h3', {
          class: 'fighter-profile__name',
          textContent: 'Annoyed Karen',
@@ -112,7 +130,7 @@ export const chooseFighterStep = () => {
 
       fighterStats.append(fighterHealth(), fighterStrength());
       fighterDetails.append(fighterStats, fighterSpecial(), fighterWeakness());
-      fighterProfileContainer.append(fighterName, fighterDetails);
+      fighterProfileContainer.append(fighterAvatar(), fighterName, fighterDetails);
       return fighterProfileContainer;
    };
 

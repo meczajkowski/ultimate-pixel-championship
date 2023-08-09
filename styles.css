@@ -133,7 +133,34 @@ h1.welcome-screen__heading {
    font-size: 30px;
    font-weight: 400;
    line-height: 35px; /* 116.667% */
-   margin-block: 10px 13px;
+   margin-block: 20px 13px;
+}
+
+.fighter-profile__avatar {
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.fighter-profile__avatar-base {
+   position: absolute;
+   bottom: -10px;
+   z-index: -1;
+   height: 20px;
+   width: 193px;
+   border-radius: 50%;
+   background-color: var(--primary-color);
+   opacity: 0.4;
+}
+
+.fighter-profile__avatar-image {
+   --size: 166px;
+
+   width: var(--size);
+   height: var(--size);
+   /* position: absolute; */
+   bottom: 0;
 }
 
 .fighter-profile__details {
