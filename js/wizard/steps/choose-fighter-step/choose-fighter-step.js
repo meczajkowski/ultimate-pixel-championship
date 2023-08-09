@@ -10,6 +10,107 @@ export const chooseFighterStep = () => {
       return element;
    };
 
+   // Fighter profile
+   const chooseFighterStepFighterProfile = () => {
+      // main container
+      const fighterProfileContainer = createElementWithAttributes('div', {
+         class: 'fighter-profile',
+      });
+
+      // details container
+      const fighterDetails = createElementWithAttributes('div', {
+         class: 'fighter-profile__details',
+      });
+
+      // stats container
+      const fighterStats = createElementWithAttributes('div', {
+         class: 'fighter-profile__stats',
+      });
+
+      // stats health
+      const fighterHealth = () => {
+         const container = createElementWithAttributes('div', {
+            class: 'fighter-profile__stat-container fighter-profile__stat-container--health',
+         });
+
+         const title = createElementWithAttributes('h4', {
+            class: 'fighter-profile__stat-title fighter-profile__stat-title--health',
+            textContent: 'HEALTH',
+         });
+
+         const value = createElementWithAttributes('h5', {
+            class: 'fighter-profile__stat-value fighter-profile__stat-value--health',
+            textContent: '67',
+         });
+
+         container.append(title, value);
+         return container;
+      };
+
+      // stats strength
+      const fighterStrength = () => {
+         const container = createElementWithAttributes('div', {
+            class: 'fighter-profile__stat-container fighter-profile__stat-container--strength',
+         });
+
+         const title = createElementWithAttributes('h4', {
+            class: 'fighter-profile__stat-title fighter-profile__stat-title--strength',
+            textContent: 'ATTACK',
+         });
+
+         const value = createElementWithAttributes('h5', {
+            class: 'fighter-profile__stat-value fighter-profile__stat-value--strength',
+            textContent: '14 - 18',
+         });
+
+         container.append(title, value);
+         return container;
+      };
+
+      // stats special attack
+      const fighterSpecial = () => {
+         const container = createElementWithAttributes('div', {
+            class: 'fighter-profile__stat-container fighter-profile__stat-container--special',
+         });
+
+         const title = createElementWithAttributes('h4', {
+            class: 'fighter-profile__stat-title fighter-profile__stat-title--special',
+            textContent: 'SPECIAL ATTACK',
+         });
+
+         const value = createElementWithAttributes('h5', {
+            class: 'fighter-profile__stat-value fighter-profile__stat-value--special',
+            textContent: 'Passive Aggressiveness',
+         });
+         container.append(title, value);
+         return container;
+      };
+
+      // stats weakness
+      const fighterWeakness = () => {
+         const container = createElementWithAttributes('div', {
+            class: 'fighter-profile__stat-container fighter-profile__stat-container--weakness',
+         });
+
+         const title = createElementWithAttributes('h4', {
+            class: 'fighter-profile__stat-title fighter-profile__stat-title--weakness',
+            textContent: 'WEAKNESS',
+         });
+
+         const value = createElementWithAttributes('h5', {
+            class: 'fighter-profile__stat-value fighter-profile__stat-value--weakness',
+            textContent: 'Logical thinking',
+         });
+         container.append(title, value);
+         return container;
+      };
+
+      fighterStats.append(fighterHealth(), fighterStrength());
+      fighterDetails.append(fighterStats, fighterSpecial(), fighterWeakness());
+      fighterProfileContainer.append(fighterDetails);
+      return fighterProfileContainer;
+   };
+
    // Button Primary
    const chooseFighterStepButtonPrimary = () => {
       const element = createElementWithAttributes('a', {
@@ -27,6 +128,7 @@ export const chooseFighterStep = () => {
    });
 
    chooseFighterStepWrapper.append(chooseFighterStepHeading());
+   chooseFighterStepWrapper.append(chooseFighterStepFighterProfile());
    chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
 
    return chooseFighterStepWrapper;
