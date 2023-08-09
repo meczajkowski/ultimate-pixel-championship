@@ -126,6 +126,16 @@ h1.welcome-screen__heading {
 }
 
 /* fighter profile */
+.fighter-profile__name {
+   color: var(--white);
+   text-align: center;
+   font-family: Germania One;
+   font-size: 30px;
+   font-weight: 400;
+   line-height: 35px; /* 116.667% */
+   margin-block: 10px 13px;
+}
+
 .fighter-profile__details {
    width: 100%;
    padding: 24px 28px;

@@ -17,6 +17,11 @@ export const chooseFighterStep = () => {
          class: 'fighter-profile',
       });
 
+      const fighterName = createElementWithAttributes('h3', {
+         class: 'fighter-profile__name',
+         textContent: 'Annoyed Karen',
+      });
+
       // details container
       const fighterDetails = createElementWithAttributes('div', {
          class: 'fighter-profile__details',
@@ -107,7 +112,7 @@ export const chooseFighterStep = () => {
 
       fighterStats.append(fighterHealth(), fighterStrength());
       fighterDetails.append(fighterStats, fighterSpecial(), fighterWeakness());
-      fighterProfileContainer.append(fighterDetails);
+      fighterProfileContainer.append(fighterName, fighterDetails);
       return fighterProfileContainer;
    };
 
