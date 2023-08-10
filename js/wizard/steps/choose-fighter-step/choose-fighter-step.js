@@ -10,6 +10,42 @@ export const chooseFighterStep = () => {
       return element;
    };
 
+   // Progress Bar
+   const wizardProgressBar = () => {
+      const container = createElementWithAttributes('div', {
+         class: 'wizard-progress-bar',
+      });
+
+      const steps = createElementWithAttributes('div', {
+         class: 'wizard-progress-bar__steps',
+      });
+
+      const stepIcon = () => {
+         const element = createElementWithAttributes('img', {
+            class: 'wizard-progress-bar__step-icon',
+            src: '../../../../assets/step-icon-active.svg',
+         });
+         return element;
+      };
+
+      const wizardProgress = () => {
+         const container = createElementWithAttributes('div', {
+            class: 'wizard-progress-bar__progress',
+         });
+
+         const indicator = createElementWithAttributes('span', {
+            class: 'wizard-progress-bar__indicator',
+         });
+
+         container.append(indicator);
+         return container;
+      };
+
+      steps.append(stepIcon(), stepIcon(), stepIcon(), wizardProgress());
+      container.append(steps);
+      return container;
+   };
+
    // Fighter profile
    const chooseFighterStepFighterProfile = () => {
       // main container
@@ -151,6 +187,7 @@ export const chooseFighterStep = () => {
    });
 
    chooseFighterStepWrapper.append(chooseFighterStepHeading());
+   chooseFighterStepWrapper.append(wizardProgressBar());
    chooseFighterStepWrapper.append(chooseFighterStepFighterProfile());
    chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
 

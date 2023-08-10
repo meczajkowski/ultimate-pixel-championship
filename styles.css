@@ -2,6 +2,7 @@
    --primary-color: #da8b14;
    --darkest: #0f0f0f;
    --white: #fff;
+   --nude: #31251e;
 }
 
 * {
@@ -123,6 +124,32 @@ h1.welcome-screen__heading {
    text-align: center;
    font-size: 30px;
    line-height: 35px; /* 116.667% */
+}
+
+/* progress bar */
+.wizard-progress-bar {
+   width: 146px;
+   margin-block: 15px 30px;
+   margin-inline: auto;
+}
+
+.wizard-progress-bar__steps {
+   position: relative;
+   height: 24px;
+   display: flex;
+   justify-content: space-between;
+}
+
+.wizard-progress-bar__progress {
+   position: absolute;
+   top: 11px;
+   left: 5%;
+   z-index: -1;
+   margin: auto;
+   height: 2px;
+   width: 90%;
+   background-color: var(--nude);
+   background-color: var(--primary-color);
 }
 
 /* fighter profile */
