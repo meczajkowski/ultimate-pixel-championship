@@ -1,6 +1,8 @@
 :root {
    --primary-color: #da8b14;
    --darkest: #0f0f0f;
+   --white: #fff;
+   --nude: #31251e;
 }
 
 * {
@@ -34,6 +36,21 @@ body {
    background-color: var(--primary-color);
    background-image: url(./assets/button-frame-primary.svg);
    background-position: center;
+}
+
+.navigation-arrow {
+   padding: 10px;
+   position: absolute;
+   top: 45%;
+}
+
+.navigation-arrow--right {
+   right: 1%;
+}
+
+.navigation-arrow--left {
+   transform: rotate(180deg);
+   left: 1%;
 }
 
 #app {
@@ -110,4 +127,115 @@ h1.welcome-screen__heading {
 .welcome-screen__image {
    display: block;
    margin: 27px auto 0;
+}
+
+/* Wizard screen */
+.wizard-heading {
+   color: var(--primary-color);
+   text-align: center;
+   font-size: 30px;
+   line-height: 35px; /* 116.667% */
+}
+
+/* progress bar */
+.wizard-progress-bar {
+   width: 146px;
+   margin-block: 15px 30px;
+   margin-inline: auto;
+}
+
+.wizard-progress-bar__steps {
+   position: relative;
+   height: 24px;
+   display: flex;
+   justify-content: space-between;
+}
+
+.wizard-progress-bar__progress {
+   position: absolute;
+   top: 11px;
+   left: 5%;
+   z-index: -1;
+   margin: auto;
+   height: 2px;
+   width: 90%;
+   background-color: var(--nude);
+   background-color: var(--primary-color);
+}
+
+/* fighter profile */
+.fighter-profile__name {
+   color: var(--white);
+   text-align: center;
+   font-family: Germania One;
+   font-size: 30px;
+   font-weight: 400;
+   line-height: 35px; /* 116.667% */
+   margin-block: 20px 13px;
+}
+
+.fighter-profile__avatar {
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.fighter-profile__avatar-base {
+   position: absolute;
+   bottom: -10px;
+   z-index: -1;
+   height: 20px;
+   width: 193px;
+   border-radius: 50%;
+   background-color: var(--primary-color);
+   opacity: 0.4;
+}
+
+.fighter-profile__avatar-image {
+   --size: 166px;
+
+   width: var(--size);
+   height: var(--size);
+   /* position: absolute; */
+   bottom: 0;
+}
+
+.fighter-profile__details {
+   width: 100%;
+   padding: 24px 28px;
+   margin-bottom: 27px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   gap: 24px;
+}
+
+.fighter-profile__stats {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 34px;
+}
+
+.fighter-profile__stat-title {
+   color: var(--primary-color);
+   text-align: center;
+   font-family: Roboto Mono;
+   font-size: 12px;
+   font-weight: 700;
+   line-height: 16px; /* 133.333% */
+   letter-spacing: 0.36px;
+
+   margin-bottom: 4px;
+}
+
+.fighter-profile__stat-value {
+   color: var(--white);
+   text-align: center;
+   font-family: Germania One;
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 21px; /* 116.667% */
 }
