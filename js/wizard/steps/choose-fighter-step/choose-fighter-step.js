@@ -181,6 +181,24 @@ export const chooseFighterStep = () => {
       return element;
    };
 
+   // Next Fighter navigation
+   const chooseFighterStepNextFighter = () => {
+      const element = createElementWithAttributes('img', {
+         class: 'navigation-arrow navigation-arrow--right',
+         src: '../../../../assets/arrow.svg',
+      });
+      return element;
+   };
+
+   // Prev Fighter navigation
+   const chooseFighterStepPrevFighter = () => {
+      const element = createElementWithAttributes('img', {
+         class: 'navigation-arrow navigation-arrow--left',
+         src: '../../../../assets/arrow.svg',
+      });
+      return element;
+   };
+
    // wrapper
    const chooseFighterStepWrapper = createElementWithAttributes('div', {
       class: 'wrapper wrapper--choose-fighter-step',
@@ -189,6 +207,7 @@ export const chooseFighterStep = () => {
    chooseFighterStepWrapper.append(chooseFighterStepHeading());
    chooseFighterStepWrapper.append(wizardProgressBar());
    chooseFighterStepWrapper.append(chooseFighterStepFighterProfile());
+   chooseFighterStepWrapper.append(chooseFighterStepNextFighter(), chooseFighterStepPrevFighter());
    chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
 
    return chooseFighterStepWrapper;
