@@ -163,6 +163,13 @@ h1.welcome-screen__heading {
    /* background-color: var(--primary-color); */
 }
 
+.wizard-progress-bar__indicator {
+   display: block;
+   height: 100%;
+   background-color: var(--primary-color);
+   z-index: 0;
+}
+
 /* fighter profile */
 .fighter-profile__name {
    color: var(--white);

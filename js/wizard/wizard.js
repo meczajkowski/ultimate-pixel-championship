@@ -44,6 +44,13 @@ export const initWizard = () => {
 
          const indicator = createElementWithAttributes('span', {
             class: 'wizard-progress-bar__indicator',
+            style: `${
+               currentStepIndex == 0
+                  ? 'width: 55%'
+                  : currentStepIndex == 1
+                  ? 'width: 55%'
+                  : 'width: 100%'
+            }`,
          });
 
          container.append(indicator);
