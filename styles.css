@@ -160,7 +160,7 @@ h1.welcome-screen__heading {
    height: 2px;
    width: 90%;
    background-color: var(--nude);
-   background-color: var(--primary-color);
+   /* background-color: var(--primary-color); */
 }
 
 /* fighter profile */

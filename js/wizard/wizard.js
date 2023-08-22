@@ -14,7 +14,7 @@ export const initWizard = () => {
    };
 
    // Progress Bar
-   const wizardProgressBar = () => {
+   const wizardProgressBar = (maxSteps, currentStepIndex) => {
       const container = createElementWithAttributes('div', {
          class: 'wizard-progress-bar',
       });
@@ -23,12 +23,18 @@ export const initWizard = () => {
          class: 'wizard-progress-bar__steps',
       });
 
-      const stepIcon = () => {
-         const element = createElementWithAttributes('img', {
-            class: 'wizard-progress-bar__step-icon',
-            src: '../../../../assets/step-icon-active.svg',
-         });
-         return element;
+      const stepIcons = (maxSteps, currentStepIndex) => {
+         const icons = [];
+         for (let i = 0; i < maxSteps; i++) {
+            const element = createElementWithAttributes('img', {
+               class: 'wizard-progress-bar__step-icon',
+               src: `../../../../assets/step-icon-${currentStepIndex >= i ? 'active' : 'nude'}.svg`,
+            });
+            icons.push(element);
+         }
+         console.log(currentStepIndex);
+         console.log(icons);
+         return icons;
       };
 
       const wizardProgress = () => {
@@ -44,7 +50,7 @@ export const initWizard = () => {
          return container;
       };
 
-      steps.append(stepIcon(), stepIcon(), stepIcon(), wizardProgress());
+      steps.append(...stepIcons(maxSteps, currentStepIndex), wizardProgress());
       container.append(steps);
       return container;
    };
@@ -64,7 +70,11 @@ export const initWizard = () => {
    });
 
    // I displaying only active step in my HTML
-   wizardWrapper.append(wizardHeading(), wizardProgressBar(), steps[currentStepIndex]);
+   wizardWrapper.append(
+      wizardHeading(),
+      wizardProgressBar(maxSteps, currentStepIndex),
+      steps[currentStepIndex],
+   );
 
    return wizardWrapper;
 };
