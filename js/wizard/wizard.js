@@ -1,8 +1,54 @@
 import { chooseFighterStep } from './steps/choose-fighter-step/choose-fighter-step.js';
 import { bookingDetailsStep } from './steps/booking-details-step/booking-details-step.js';
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
+import { createElementWithAttributes } from '../helpers/createElementWithAttributes.js';
 
 export const initWizard = () => {
+   // Heading
+   const wizardHeading = () => {
+      const element = createElementWithAttributes('h2', {
+         class: 'welcome-screen__heading wizard-heading',
+         textContent: 'Choose your fighter',
+      });
+      return element;
+   };
+
+   // Progress Bar
+   const wizardProgressBar = () => {
+      const container = createElementWithAttributes('div', {
+         class: 'wizard-progress-bar',
+      });
+
+      const steps = createElementWithAttributes('div', {
+         class: 'wizard-progress-bar__steps',
+      });
+
+      const stepIcon = () => {
+         const element = createElementWithAttributes('img', {
+            class: 'wizard-progress-bar__step-icon',
+            src: '../../../../assets/step-icon-active.svg',
+         });
+         return element;
+      };
+
+      const wizardProgress = () => {
+         const container = createElementWithAttributes('div', {
+            class: 'wizard-progress-bar__progress',
+         });
+
+         const indicator = createElementWithAttributes('span', {
+            class: 'wizard-progress-bar__indicator',
+         });
+
+         container.append(indicator);
+         return container;
+      };
+
+      steps.append(stepIcon(), stepIcon(), stepIcon(), wizardProgress());
+      container.append(steps);
+      return container;
+   };
+
    // I keep steps in the array, so Im able to navigate through
    const steps = [chooseFighterStep(), bookingDetailsStep(), bookingConfirmationStep()];
 
@@ -12,10 +58,13 @@ export const initWizard = () => {
    // I need to know max steps amount, to prevent going to far
    const maxSteps = steps.length;
 
-   const wizardWrapper = document.createElement('div');
+   // wrapper
+   const wizardWrapper = createElementWithAttributes('div', {
+      class: 'wrapper wrapper--wizard',
+   });
 
    // I displaying only active step in my HTML
-   wizardWrapper.append(steps[currentStepIndex]);
+   wizardWrapper.append(wizardHeading(), wizardProgressBar(), steps[currentStepIndex]);
 
    return wizardWrapper;
 };
