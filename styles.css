@@ -160,7 +160,14 @@ h1.welcome-screen__heading {
    height: 2px;
    width: 90%;
    background-color: var(--nude);
+   /* background-color: var(--primary-color); */
+}
+
+.wizard-progress-bar__indicator {
+   display: block;
+   height: 100%;
    background-color: var(--primary-color);
+   z-index: 0;
 }
 
 /* fighter profile */
