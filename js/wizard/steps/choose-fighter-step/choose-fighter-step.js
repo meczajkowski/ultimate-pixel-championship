@@ -1,10 +1,11 @@
 import { createElementWithAttributes } from '../../../helpers/createElementWithAttributes.js';
+import { fighters } from './fighters.js';
 
 export const chooseFighterStep = () => {
    // Fighter profile
-   const chooseFighterStepFighterProfile = () => {
+   const chooseFighterStepFighterProfile = (fighter) => {
       // main container
-      const fighterProfileContainer = createElementWithAttributes('div', {
+      const fighterProfile = createElementWithAttributes('div', {
          class: 'fighter-profile',
       });
 
@@ -15,7 +16,8 @@ export const chooseFighterStep = () => {
 
          const image = createElementWithAttributes('img', {
             class: 'fighter-profile__avatar-image',
-            src: '../../../../assets/karen.png',
+            // src: '../../../../assets/karen.png',
+            src: fighter.imageUrl,
          });
 
          const base = createElementWithAttributes('div', {
@@ -28,7 +30,8 @@ export const chooseFighterStep = () => {
 
       const fighterName = createElementWithAttributes('h3', {
          class: 'fighter-profile__name',
-         textContent: 'Annoyed Karen',
+         // textContent: 'Annoyed Karen',
+         textContent: fighter.name,
       });
 
       // details container
@@ -54,7 +57,8 @@ export const chooseFighterStep = () => {
 
          const value = createElementWithAttributes('h5', {
             class: 'fighter-profile__stat-value fighter-profile__stat-value--health',
-            textContent: '67',
+            // textContent: '67',
+            textContent: fighter.health,
          });
 
          container.append(title, value);
@@ -74,7 +78,8 @@ export const chooseFighterStep = () => {
 
          const value = createElementWithAttributes('h5', {
             class: 'fighter-profile__stat-value fighter-profile__stat-value--strength',
-            textContent: '14 - 18',
+            // textContent: '14 - 18',
+            textContent: fighter.attack,
          });
 
          container.append(title, value);
@@ -94,7 +99,8 @@ export const chooseFighterStep = () => {
 
          const value = createElementWithAttributes('h5', {
             class: 'fighter-profile__stat-value fighter-profile__stat-value--special',
-            textContent: 'Passive Aggressiveness',
+            // textContent: 'Passive Aggressiveness',
+            textContent: fighter.special,
          });
          container.append(title, value);
          return container;
@@ -113,7 +119,8 @@ export const chooseFighterStep = () => {
 
          const value = createElementWithAttributes('h5', {
             class: 'fighter-profile__stat-value fighter-profile__stat-value--weakness',
-            textContent: 'Logical thinking',
+            // textContent: 'Logical thinking',
+            textContent: fighter.weakness,
          });
          container.append(title, value);
          return container;
@@ -121,9 +128,14 @@ export const chooseFighterStep = () => {
 
       fighterStats.append(fighterHealth(), fighterStrength());
       fighterDetails.append(fighterStats, fighterSpecial(), fighterWeakness());
-      fighterProfileContainer.append(fighterAvatar(), fighterName, fighterDetails);
-      return fighterProfileContainer;
+      fighterProfile.append(fighterAvatar(), fighterName, fighterDetails);
+      return fighterProfile;
    };
+
+   // All fighters
+   const fightersContainer = createElementWithAttributes('div', {
+      class: 'fighters',
+   });
 
    // Button Primary
    const chooseFighterStepButtonPrimary = () => {
@@ -159,7 +171,8 @@ export const chooseFighterStep = () => {
       class: 'wrapper wrapper--choose-fighter-step',
    });
 
-   chooseFighterStepWrapper.append(chooseFighterStepFighterProfile());
+   fightersContainer.append(...fighters.map((fighter) => chooseFighterStepFighterProfile(fighter)));
+   chooseFighterStepWrapper.append(fightersContainer);
    chooseFighterStepWrapper.append(chooseFighterStepNextFighter(), chooseFighterStepPrevFighter());
    chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
 
