@@ -1,12 +1,14 @@
 import { createElementWithAttributes } from '../../../helpers/createElementWithAttributes.js';
 import { fighters } from './fighters.js';
 
+let activeFighter = 0;
+
 export const chooseFighterStep = () => {
    // Fighter profile
-   const chooseFighterStepFighterProfile = (fighter) => {
+   const chooseFighterStepFighterProfile = (fighter, active = '') => {
       // main container
       const fighterProfile = createElementWithAttributes('div', {
-         class: 'fighter-profile',
+         class: `fighter-profile ${active}`,
       });
 
       const fighterAvatar = () => {
@@ -154,6 +156,13 @@ export const chooseFighterStep = () => {
          class: 'navigation-arrow navigation-arrow--right',
          src: '../../../../assets/arrow.svg',
       });
+
+      element.addEventListener('click', () => {
+         if (activeFighter >= fighters.length - 1) return;
+         activeFighter++;
+         renderFighterProfile();
+      });
+
       return element;
    };
 
@@ -163,7 +172,25 @@ export const chooseFighterStep = () => {
          class: 'navigation-arrow navigation-arrow--left',
          src: '../../../../assets/arrow.svg',
       });
+
+      element.addEventListener('click', () => {
+         if (activeFighter <= 0) return;
+         activeFighter--;
+         renderFighterProfile();
+      });
+
       return element;
+   };
+
+   const renderFighterProfile = () => {
+      fightersContainer.innerHTML = '';
+      fightersContainer.append(
+         ...fighters.map((fighter) =>
+            fighter === fighters[activeFighter]
+               ? chooseFighterStepFighterProfile(fighter, 'active')
+               : '',
+         ),
+      );
    };
 
    // wrapper
@@ -171,7 +198,7 @@ export const chooseFighterStep = () => {
       class: 'wrapper wrapper--choose-fighter-step',
    });
 
-   fightersContainer.append(...fighters.map((fighter) => chooseFighterStepFighterProfile(fighter)));
+   renderFighterProfile();
    chooseFighterStepWrapper.append(fightersContainer);
    chooseFighterStepWrapper.append(chooseFighterStepNextFighter(), chooseFighterStepPrevFighter());
    chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
