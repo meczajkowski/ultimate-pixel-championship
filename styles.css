@@ -171,6 +171,19 @@ h1.welcome-screen__heading {
 }
 
 /* fighter profile */
+.fighters {
+   display: flex;
+   justify-content: center;
+}
+
+.fighter-profile {
+   display: none;
+}
+
+.fighter-profile.active {
+   display: block;
+}
+
 .fighter-profile__name {
    color: var(--white);
    text-align: center;

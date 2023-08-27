@@ -1,11 +1,14 @@
 import { createElementWithAttributes } from '../../../helpers/createElementWithAttributes.js';
+import { fighters } from './fighters.js';
+
+let activeFighter = 0;
 
 export const chooseFighterStep = () => {
    // Fighter profile
-   const chooseFighterStepFighterProfile = () => {
+   const chooseFighterStepFighterProfile = (fighter, active = '') => {
       // main container
-      const fighterProfileContainer = createElementWithAttributes('div', {
-         class: 'fighter-profile',
+      const fighterProfile = createElementWithAttributes('div', {
+         class: `fighter-profile ${active}`,
       });
 
       const fighterAvatar = () => {
@@ -15,7 +18,8 @@ export const chooseFighterStep = () => {
 
          const image = createElementWithAttributes('img', {
             class: 'fighter-profile__avatar-image',
-            src: '../../../../assets/karen.png',
+            // src: '../../../../assets/karen.png',
+            src: fighter.imageUrl,
          });
 
          const base = createElementWithAttributes('div', {
@@ -28,7 +32,8 @@ export const chooseFighterStep = () => {
 
       const fighterName = createElementWithAttributes('h3', {
          class: 'fighter-profile__name',
-         textContent: 'Annoyed Karen',
+         // textContent: 'Annoyed Karen',
+         textContent: fighter.name,
       });
 
       // details container
@@ -54,7 +59,8 @@ export const chooseFighterStep = () => {
 
          const value = createElementWithAttributes('h5', {
             class: 'fighter-profile__stat-value fighter-profile__stat-value--health',
-            textContent: '67',
+            // textContent: '67',
+            textContent: fighter.health,
          });
 
          container.append(title, value);
@@ -74,7 +80,8 @@ export const chooseFighterStep = () => {
 
          const value = createElementWithAttributes('h5', {
             class: 'fighter-profile__stat-value fighter-profile__stat-value--strength',
-            textContent: '14 - 18',
+            // textContent: '14 - 18',
+            textContent: fighter.attack,
          });
 
          container.append(title, value);
@@ -94,7 +101,8 @@ export const chooseFighterStep = () => {
 
          const value = createElementWithAttributes('h5', {
             class: 'fighter-profile__stat-value fighter-profile__stat-value--special',
-            textContent: 'Passive Aggressiveness',
+            // textContent: 'Passive Aggressiveness',
+            textContent: fighter.special,
          });
          container.append(title, value);
          return container;
@@ -113,7 +121,8 @@ export const chooseFighterStep = () => {
 
          const value = createElementWithAttributes('h5', {
             class: 'fighter-profile__stat-value fighter-profile__stat-value--weakness',
-            textContent: 'Logical thinking',
+            // textContent: 'Logical thinking',
+            textContent: fighter.weakness,
          });
          container.append(title, value);
          return container;
@@ -121,9 +130,14 @@ export const chooseFighterStep = () => {
 
       fighterStats.append(fighterHealth(), fighterStrength());
       fighterDetails.append(fighterStats, fighterSpecial(), fighterWeakness());
-      fighterProfileContainer.append(fighterAvatar(), fighterName, fighterDetails);
-      return fighterProfileContainer;
+      fighterProfile.append(fighterAvatar(), fighterName, fighterDetails);
+      return fighterProfile;
    };
+
+   // All fighters
+   const fightersContainer = createElementWithAttributes('div', {
+      class: 'fighters',
+   });
 
    // Button Primary
    const chooseFighterStepButtonPrimary = () => {
@@ -142,6 +156,13 @@ export const chooseFighterStep = () => {
          class: 'navigation-arrow navigation-arrow--right',
          src: '../../../../assets/arrow.svg',
       });
+
+      element.addEventListener('click', () => {
+         if (activeFighter >= fighters.length - 1) return;
+         activeFighter++;
+         renderFighterProfile();
+      });
+
       return element;
    };
 
@@ -151,7 +172,25 @@ export const chooseFighterStep = () => {
          class: 'navigation-arrow navigation-arrow--left',
          src: '../../../../assets/arrow.svg',
       });
+
+      element.addEventListener('click', () => {
+         if (activeFighter <= 0) return;
+         activeFighter--;
+         renderFighterProfile();
+      });
+
       return element;
+   };
+
+   const renderFighterProfile = () => {
+      fightersContainer.innerHTML = '';
+      fightersContainer.append(
+         ...fighters.map((fighter) =>
+            fighter === fighters[activeFighter]
+               ? chooseFighterStepFighterProfile(fighter, 'active')
+               : '',
+         ),
+      );
    };
 
    // wrapper
@@ -159,7 +198,8 @@ export const chooseFighterStep = () => {
       class: 'wrapper wrapper--choose-fighter-step',
    });
 
-   chooseFighterStepWrapper.append(chooseFighterStepFighterProfile());
+   renderFighterProfile();
+   chooseFighterStepWrapper.append(fightersContainer);
    chooseFighterStepWrapper.append(chooseFighterStepNextFighter(), chooseFighterStepPrevFighter());
    chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
 

@@ -32,8 +32,7 @@ export const initWizard = () => {
             });
             icons.push(element);
          }
-         console.log(currentStepIndex);
-         console.log(icons);
+
          return icons;
       };
 
