@@ -1,14 +1,14 @@
 import { createElementWithAttributes } from '../../../helpers/createElementWithAttributes.js';
 import { fighters } from './fighters.js';
 
-let activeFighter = 0;
-
 export const chooseFighterStep = () => {
+   let activeFighter = 0;
    // Fighter profile
-   const chooseFighterStepFighterProfile = (fighter, active = '') => {
+   const chooseFighterStepFighterProfile = (activeFighter, fighter, active = '') => {
       // main container
       const fighterProfile = createElementWithAttributes('div', {
          class: `fighter-profile ${active}`,
+         'data-fighter-index': activeFighter,
       });
 
       const fighterAvatar = () => {
@@ -139,17 +139,6 @@ export const chooseFighterStep = () => {
       class: 'fighters',
    });
 
-   // Button Primary
-   const chooseFighterStepButtonPrimary = () => {
-      const element = createElementWithAttributes('a', {
-         class: 'button button--primary',
-         textContent: 'Choose',
-         href: '#',
-         onclick: 'route()',
-      });
-      return element;
-   };
-
    // Next Fighter navigation
    const chooseFighterStepNextFighter = () => {
       const element = createElementWithAttributes('img', {
@@ -187,7 +176,7 @@ export const chooseFighterStep = () => {
       fightersContainer.append(
          ...fighters.map((fighter) =>
             fighter === fighters[activeFighter]
-               ? chooseFighterStepFighterProfile(fighter, 'active')
+               ? chooseFighterStepFighterProfile(activeFighter, fighter, 'active')
                : '',
          ),
       );
@@ -201,7 +190,7 @@ export const chooseFighterStep = () => {
    renderFighterProfile();
    chooseFighterStepWrapper.append(fightersContainer);
    chooseFighterStepWrapper.append(chooseFighterStepNextFighter(), chooseFighterStepPrevFighter());
-   chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
+   // chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
 
    return chooseFighterStepWrapper;
 };

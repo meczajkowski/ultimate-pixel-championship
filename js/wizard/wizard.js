@@ -2,8 +2,10 @@ import { chooseFighterStep } from './steps/choose-fighter-step/choose-fighter-st
 import { bookingDetailsStep } from './steps/booking-details-step/booking-details-step.js';
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
 import { createElementWithAttributes } from '../helpers/createElementWithAttributes.js';
+import { fighters } from './steps/choose-fighter-step/fighters.js';
 
 export const initWizard = () => {
+   let chossenFighter = '';
    // Heading
    const wizardHeading = () => {
       const element = createElementWithAttributes('h2', {
@@ -61,11 +63,35 @@ export const initWizard = () => {
       return container;
    };
 
+   // Button Primary
+   const wizardButtonPrimary = () => {
+      const element = createElementWithAttributes('a', {
+         class: 'button button--primary',
+         textContent: 'Choose',
+         href: '#',
+         onclick: 'route()',
+      });
+
+      element.addEventListener('click', () => {
+         if (currentStepIndex === 0) {
+            chossenFighter =
+               fighters[
+                  document.querySelector('.fighter-profile').getAttribute('data-fighter-index')
+               ];
+            console.log(chossenFighter);
+         }
+
+         currentStepIndex++;
+         renderStep();
+      });
+      return element;
+   };
+
    // I keep steps in the array, so Im able to navigate through
    const steps = [chooseFighterStep(), bookingDetailsStep(), bookingConfirmationStep()];
 
    // I need to monitor which step is active. You can change value to see how step changes. Try 2 for example.
-   const currentStepIndex = 0;
+   let currentStepIndex = 0;
 
    // I need to know max steps amount, to prevent going to far
    const maxSteps = steps.length;
@@ -76,11 +102,17 @@ export const initWizard = () => {
    });
 
    // I displaying only active step in my HTML
-   wizardWrapper.append(
-      wizardHeading(),
-      wizardProgressBar(maxSteps, currentStepIndex),
-      steps[currentStepIndex],
-   );
+   const renderStep = () => {
+      wizardWrapper.innerHTML = '';
+      wizardWrapper.append(
+         wizardHeading(),
+         wizardProgressBar(maxSteps, currentStepIndex),
+         steps[currentStepIndex],
+         wizardButtonPrimary(),
+      );
+   };
+
+   renderStep();
 
    return wizardWrapper;
 };
