@@ -2,15 +2,13 @@ import { chooseFighterStep } from './steps/choose-fighter-step/choose-fighter-st
 import { bookingDetailsStep } from './steps/booking-details-step/booking-details-step.js';
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
 import { createElementWithAttributes } from '../helpers/createElementWithAttributes.js';
-import { fighters } from './steps/choose-fighter-step/fighters.js';
 
 export const initWizard = () => {
-   let chossenFighter = '';
    // Heading
-   const wizardHeading = () => {
+   const wizardHeading = (title) => {
       const element = createElementWithAttributes('h2', {
          class: 'welcome-screen__heading wizard-heading',
-         textContent: 'Choose your fighter',
+         textContent: title,
       });
       return element;
    };
@@ -64,26 +62,38 @@ export const initWizard = () => {
    };
 
    // Button Primary
-   const wizardButtonPrimary = () => {
+   const wizardButtonPrimary = (title) => {
       const element = createElementWithAttributes('a', {
          class: 'button button--primary',
-         textContent: 'Choose',
+         textContent: title,
          href: '#',
          onclick: 'route()',
       });
 
       element.addEventListener('click', () => {
+         if (currentStepIndex === maxSteps - 1) return;
          if (currentStepIndex === 0) {
-            chossenFighter =
-               fighters[
-                  document.querySelector('.fighter-profile').getAttribute('data-fighter-index')
-               ];
-            console.log(chossenFighter);
+            steps[1] = bookingDetailsStep();
          }
-
          currentStepIndex++;
          renderStep();
       });
+      return element;
+   };
+
+   // Button Secondary
+   const wizardButtonSecondary = () => {
+      const element = createElementWithAttributes('a', {
+         class: 'button button--secondary',
+         textContent: 'Back',
+         href: '#',
+         onclick: 'route()',
+      });
+
+      // element.addEventListener('click', () => {
+      //    currentStepIndex--;
+      //    renderStep();
+      // });
       return element;
    };
 
@@ -104,12 +114,32 @@ export const initWizard = () => {
    // I displaying only active step in my HTML
    const renderStep = () => {
       wizardWrapper.innerHTML = '';
-      wizardWrapper.append(
-         wizardHeading(),
-         wizardProgressBar(maxSteps, currentStepIndex),
-         steps[currentStepIndex],
-         wizardButtonPrimary(),
-      );
+      switch (currentStepIndex) {
+         case 0:
+            wizardWrapper.append(
+               wizardHeading('Choose your fighter'),
+               wizardProgressBar(maxSteps, currentStepIndex),
+               steps[currentStepIndex],
+               wizardButtonPrimary('Choose'),
+            );
+            break;
+         case 1:
+            wizardWrapper.append(
+               wizardHeading('Booking details'),
+               wizardProgressBar(maxSteps, currentStepIndex),
+               steps[currentStepIndex],
+               wizardButtonPrimary('Submit'),
+               wizardButtonSecondary(),
+            );
+            break;
+         case 2:
+            wizardWrapper.append(
+               wizardHeading('Confirmation'),
+               wizardProgressBar(maxSteps, currentStepIndex),
+               steps[currentStepIndex],
+               wizardButtonPrimary('Submit another fighter'),
+            );
+      }
    };
 
    renderStep();

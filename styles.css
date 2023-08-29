@@ -1,8 +1,12 @@
 :root {
+   --font-primary: Germania One;
+
    --primary-color: #da8b14;
+   --dark: #2b1f1f;
    --darkest: #0f0f0f;
    --white: #fff;
    --nude: #31251e;
+   --gray: #9f9f9f;
 }
 
 * {
@@ -22,7 +26,7 @@ body {
    height: 64px;
    border: none;
 
-   font-family: Germania One;
+   font-family: var(--font-primary);
    text-decoration: none;
    color: var(--darkest);
    font-size: 18px;
@@ -35,6 +39,14 @@ body {
 .button--primary {
    background-color: var(--primary-color);
    background-image: url(./assets/button-frame-primary.svg);
+   background-position: center;
+}
+
+.button--secondary {
+   margin-top: 16px;
+   color: var(--white);
+   background-color: var(--dark);
+   background-image: url(./assets/button-frame-secondary.svg);
    background-position: center;
 }
 
@@ -130,6 +142,7 @@ h1.welcome-screen__heading {
 }
 
 /* Wizard screen */
+/* step 1 */
 .wizard-heading {
    color: var(--primary-color);
    text-align: center;
@@ -258,4 +271,65 @@ h1.welcome-screen__heading {
    font-size: 18px;
    font-weight: 400;
    line-height: 21px; /* 116.667% */
+}
+
+/* step 2 */
+.wrapper--booking-details-step {
+   width: 255px;
+   margin: 0 auto;
+}
+
+.booking-details-form {
+   width: 100%;
+
+   margin-top: 65px;
+   margin-bottom: 104px;
+}
+
+.booking-details-form__input-container {
+   margin-block: 32px;
+}
+
+.booking-details-form__label {
+   display: block;
+
+   margin-bottom: 6px;
+
+   font-family: Roboto Mono;
+   font-size: 12px;
+   font-weight: 700;
+   letter-spacing: 0.03em;
+}
+
+.booking-details-form__chosen-fighter {
+   font-family: var(--font-primary);
+   font-size: 30px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 35px; /* 116.667% */
+}
+
+.booking-details-form__input {
+   display: block;
+
+   width: 100%;
+   height: 50px;
+   border: 2px solid var(--nude);
+   padding-left: 17px;
+   padding-right: 10px;
+
+   background: var(--dark, #2b1f1f);
+   color: var(--white);
+
+   font-family: var(--font-primary);
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 21px; /* 116.667% */
+   transition: border 0.2s;
+}
+
+.booking-details-form__input:focus {
+   outline: none;
+   border: 2px solid var(--primary-color);
 }

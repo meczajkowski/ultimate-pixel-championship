@@ -180,6 +180,7 @@ export const chooseFighterStep = () => {
                : '',
          ),
       );
+      sessionStorage.setItem('activeFighter', JSON.stringify(fighters[activeFighter]));
    };
 
    // wrapper
@@ -190,7 +191,6 @@ export const chooseFighterStep = () => {
    renderFighterProfile();
    chooseFighterStepWrapper.append(fightersContainer);
    chooseFighterStepWrapper.append(chooseFighterStepNextFighter(), chooseFighterStepPrevFighter());
-   // chooseFighterStepWrapper.append(chooseFighterStepButtonPrimary());
 
    return chooseFighterStepWrapper;
 };
