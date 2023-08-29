@@ -281,6 +281,9 @@ h1.welcome-screen__heading {
 
 .booking-details-form {
    width: 100%;
+
+   margin-top: 65px;
+   margin-bottom: 104px;
 }
 
 .booking-details-form__input-container {
