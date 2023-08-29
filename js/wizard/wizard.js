@@ -91,7 +91,7 @@ export const initWizard = () => {
       });
 
       element.addEventListener('click', () => {
-         currentStepIndex--;
+         currentStepIndex = 0;
          renderStep();
       });
       return element;
