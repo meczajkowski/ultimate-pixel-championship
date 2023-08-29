@@ -5,10 +5,10 @@ import { createElementWithAttributes } from '../helpers/createElementWithAttribu
 
 export const initWizard = () => {
    // Heading
-   const wizardHeading = () => {
+   const wizardHeading = (title) => {
       const element = createElementWithAttributes('h2', {
          class: 'welcome-screen__heading wizard-heading',
-         textContent: 'Choose your fighter',
+         textContent: title,
       });
       return element;
    };
@@ -62,19 +62,19 @@ export const initWizard = () => {
    };
 
    // Button Primary
-   const wizardButtonPrimary = () => {
+   const wizardButtonPrimary = (title) => {
       const element = createElementWithAttributes('a', {
          class: 'button button--primary',
-         textContent: 'Choose',
+         textContent: title,
          href: '#',
          onclick: 'route()',
       });
 
       element.addEventListener('click', () => {
+         if (currentStepIndex === maxSteps - 1) return;
          if (currentStepIndex === 0) {
             steps[1] = bookingDetailsStep();
          }
-
          currentStepIndex++;
          renderStep();
       });
@@ -114,13 +114,32 @@ export const initWizard = () => {
    // I displaying only active step in my HTML
    const renderStep = () => {
       wizardWrapper.innerHTML = '';
-      wizardWrapper.append(
-         wizardHeading(),
-         wizardProgressBar(maxSteps, currentStepIndex),
-         steps[currentStepIndex],
-         wizardButtonPrimary(),
-         currentStepIndex === 1 ? wizardButtonSecondary() : '',
-      );
+      switch (currentStepIndex) {
+         case 0:
+            wizardWrapper.append(
+               wizardHeading('Choose your fighter'),
+               wizardProgressBar(maxSteps, currentStepIndex),
+               steps[currentStepIndex],
+               wizardButtonPrimary('Choose'),
+            );
+            break;
+         case 1:
+            wizardWrapper.append(
+               wizardHeading('Booking details'),
+               wizardProgressBar(maxSteps, currentStepIndex),
+               steps[currentStepIndex],
+               wizardButtonPrimary('Submit'),
+               wizardButtonSecondary(),
+            );
+            break;
+         case 2:
+            wizardWrapper.append(
+               wizardHeading('Confirmation'),
+               wizardProgressBar(maxSteps, currentStepIndex),
+               steps[currentStepIndex],
+               wizardButtonPrimary('Submit another fighter'),
+            );
+      }
    };
 
    renderStep();
