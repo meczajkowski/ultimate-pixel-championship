@@ -90,10 +90,10 @@ export const initWizard = () => {
          onclick: 'route()',
       });
 
-      // element.addEventListener('click', () => {
-      //    currentStepIndex--;
-      //    renderStep();
-      // });
+      element.addEventListener('click', () => {
+         currentStepIndex--;
+         renderStep();
+      });
       return element;
    };
 
