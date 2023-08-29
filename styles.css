@@ -42,6 +42,14 @@ body {
    background-position: center;
 }
 
+.button--secondary {
+   margin-top: 16px;
+   color: var(--white);
+   background-color: var(--dark);
+   background-image: url(./assets/button-frame-secondary.svg);
+   background-position: center;
+}
+
 .navigation-arrow {
    padding: 10px;
    position: absolute;

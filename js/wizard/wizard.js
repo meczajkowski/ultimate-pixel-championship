@@ -81,6 +81,22 @@ export const initWizard = () => {
       return element;
    };
 
+   // Button Secondary
+   const wizardButtonSecondary = () => {
+      const element = createElementWithAttributes('a', {
+         class: 'button button--secondary',
+         textContent: 'Back',
+         href: '#',
+         onclick: 'route()',
+      });
+
+      // element.addEventListener('click', () => {
+      //    currentStepIndex--;
+      //    renderStep();
+      // });
+      return element;
+   };
+
    // I keep steps in the array, so Im able to navigate through
    const steps = [chooseFighterStep(), bookingDetailsStep(), bookingConfirmationStep()];
 
@@ -103,6 +119,7 @@ export const initWizard = () => {
          wizardProgressBar(maxSteps, currentStepIndex),
          steps[currentStepIndex],
          wizardButtonPrimary(),
+         currentStepIndex === 1 ? wizardButtonSecondary() : '',
       );
    };
 
