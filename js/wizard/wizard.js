@@ -2,10 +2,8 @@ import { chooseFighterStep } from './steps/choose-fighter-step/choose-fighter-st
 import { bookingDetailsStep } from './steps/booking-details-step/booking-details-step.js';
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
 import { createElementWithAttributes } from '../helpers/createElementWithAttributes.js';
-import { fighters } from './steps/choose-fighter-step/fighters.js';
 
 export const initWizard = () => {
-   let chossenFighter = '';
    // Heading
    const wizardHeading = () => {
       const element = createElementWithAttributes('h2', {
@@ -74,11 +72,7 @@ export const initWizard = () => {
 
       element.addEventListener('click', () => {
          if (currentStepIndex === 0) {
-            chossenFighter =
-               fighters[
-                  document.querySelector('.fighter-profile').getAttribute('data-fighter-index')
-               ];
-            console.log(chossenFighter);
+            steps[1] = bookingDetailsStep();
          }
 
          currentStepIndex++;

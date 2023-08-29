@@ -5,6 +5,25 @@ const form = () => {
       class: 'booking-details-form',
    });
 
+   const chosenFighter = () => {
+      const label = createElementWithAttributes('label', {
+         class: 'booking-details-form__label booking-details-form__label--fighter',
+         textContent: 'CHOSEN FIGHTER',
+      });
+
+      const fighterName = createElementWithAttributes('p', {
+         class: 'booking-details-form__chosen-fighter',
+         textContent: JSON.parse(sessionStorage.getItem('activeFighter')).name,
+      });
+
+      const container = createElementWithAttributes('div', {
+         class: 'booking-details-form__input-container',
+      });
+
+      container.append(label, fighterName);
+      return container;
+   };
+
    const input = (type, heading, placeholder) => {
       const input = createElementWithAttributes('input', {
          class: `booking-details-form__input booking-details-form__input--${type}`,
@@ -27,7 +46,11 @@ const form = () => {
       return container;
    };
 
-   form.append(input('text', 'COMMANDER', 'Your name'), input('email', 'EMAIL', 'Your email'));
+   form.append(
+      chosenFighter(),
+      input('text', 'COMMANDER', 'Your name'),
+      input('email', 'EMAIL', 'Your email'),
+   );
    return form;
 };
 
