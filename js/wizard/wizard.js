@@ -72,7 +72,7 @@ export const initWizard = () => {
       });
 
       element.addEventListener('click', () => {
-         if (currentStepIndex === maxSteps - 1) return;
+         if (currentStepIndex === maxSteps) return;
 
          if (currentStepIndex === 0) {
             steps[1] = bookingDetailsStep();
@@ -144,6 +144,10 @@ export const initWizard = () => {
             sessionStorage.removeItem('activeFighter');
             steps[2] = bookingConfirmationStep();
             currentStepIndex++;
+            console.log(currentStepIndex);
+            renderStep();
+         } else if (currentStepIndex === 2) {
+            currentStepIndex = 0;
             renderStep();
          }
       });
