@@ -106,18 +106,21 @@ export const initWizard = () => {
                const commanderValue = commander.value.trim();
                const emailValue = email.value.trim();
 
+               // A check to see if the inputs are empty before allowing submission.
                if (commanderValue === '') {
-                  // alert('empty commander input');
                   setError(commander, 'Enter the commander name');
                } else {
                   setSuccess(commander);
                   isValidForm = true;
                }
-
+               // A check to see if the inputs are empty before allowing submission.
                if (emailValue === '') {
                   setError(email, 'Enter the email address');
                   isValidForm = false;
-               } else if (!isValidEmail(emailValue)) {
+               }
+               // A check to validate the email input against a standard email format.
+               else if (!isValidEmail(emailValue)) {
+                  // Logic to display an error message when the email input is invalid.
                   setError(email, 'Enter the correct email address');
                   isValidForm = false;
                } else {
