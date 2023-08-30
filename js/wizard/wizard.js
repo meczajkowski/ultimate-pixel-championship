@@ -79,6 +79,7 @@ export const initWizard = () => {
             currentStepIndex++;
             renderStep();
          } else if (currentStepIndex === 1) {
+            // form validation start
             const commander = document.querySelector('.booking-details-form__input--text');
             const email = document.querySelector('.booking-details-form__input--email');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -128,6 +129,8 @@ export const initWizard = () => {
             };
 
             if (!validateInputs()) return;
+            // form validation end
+
             commanderCredentials = {
                commander: commander.value.trim(),
                email: email.value.trim(),
