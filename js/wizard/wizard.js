@@ -4,6 +4,7 @@ import { bookingConfirmationStep } from './steps/booking-confirmation-step/booki
 import { createElementWithAttributes } from '../helpers/createElementWithAttributes.js';
 
 export const initWizard = () => {
+   let commanderCredentials;
    // Heading
    const wizardHeading = (title) => {
       const element = createElementWithAttributes('h2', {
@@ -72,11 +73,72 @@ export const initWizard = () => {
 
       element.addEventListener('click', () => {
          if (currentStepIndex === maxSteps - 1) return;
+
          if (currentStepIndex === 0) {
             steps[1] = bookingDetailsStep();
+            currentStepIndex++;
+            renderStep();
+         } else if (currentStepIndex === 1) {
+            const commander = document.querySelector('.booking-details-form__input--text');
+            const email = document.querySelector('.booking-details-form__input--email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // const setError = (element, message) => {
+            //    const inputParent = element.parentElement;
+            //    const errorDisplay = inputParent.querySelector('.booking-details-form__error-label');
+            //    errorDisplay.innerText = message;
+            //    element.classList.add('booking-details-form__input--error');
+            // };
+
+            // const setSuccess = (element) => {
+            //    const inputParent = element.parentElement;
+            //    const errorDisplay = inputParent.querySelector('.booking-details-form__error-label');
+            //    errorDisplay.innerText = '';
+            //    element.classList.remove('booking-details-form__input--error');
+            // };
+
+            // const isValidEmail = (email) => emailRegex.test(email);
+
+            // const validateInputs = () => {
+            //    let isValidForm = false;
+
+            //    const commanderValue = commander.value.trim();
+            //    const emailValue = email.value.trim();
+
+            //    if (commanderValue === '') {
+            //       // alert('empty commander input');
+            //       setError(commander, 'Enter the commander name');
+            //    } else {
+            //       setSuccess(commander);
+            //       isValidForm = true;
+            //    }
+
+            //    if (emailValue === '') {
+            //       setError(email, 'Enter the email address');
+            //       isValidForm = false;
+            //    } else if (!isValidEmail(emailValue)) {
+            //       setError(email, 'Enter the correct email address');
+            //       isValidForm = false;
+            //    } else {
+            //       setSuccess(email);
+            //       isValidForm = true;
+            //    }
+
+            //    return isValidForm;
+            // };
+
+            // if (!validateInputs()) return;
+            commanderCredentials = {
+               commander: commander.value.trim(),
+               email: email.value.trim(),
+               fighter: JSON.parse(sessionStorage.getItem('activeFighter')),
+            };
+            console.log(commanderCredentials);
+            sessionStorage.setItem('submitedFighter', JSON.stringify(commanderCredentials));
+            sessionStorage.removeItem('activeFighter');
+            currentStepIndex++;
+            renderStep();
          }
-         currentStepIndex++;
-         renderStep();
       });
       return element;
    };

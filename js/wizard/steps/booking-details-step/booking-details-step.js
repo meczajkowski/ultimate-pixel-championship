@@ -38,11 +38,15 @@ const form = () => {
          textContent: heading,
       });
 
+      const error = createElementWithAttributes('div', {
+         class: 'booking-details-form__error-label',
+      });
+
       const container = createElementWithAttributes('div', {
          class: 'booking-details-form__input-container',
       });
 
-      container.append(label, input);
+      container.append(label, input, error);
       return container;
    };
 
