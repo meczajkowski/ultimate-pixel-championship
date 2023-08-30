@@ -3,7 +3,9 @@ import { createElementWithAttributes } from '../../../helpers/createElementWithA
 const confirmationHeading = () => {
    const element = createElementWithAttributes('h2', {
       class: 'booking-confirmation__heading',
-      textContent: `Thank you for signing up, Commander [Commander]!`,
+      textContent: `Thank you for signing up, Commander ${
+         JSON.parse(sessionStorage.getItem('submitedFighter')).commander
+      }!`,
    });
    return element;
 };
