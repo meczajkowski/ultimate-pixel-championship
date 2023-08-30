@@ -7,6 +7,8 @@
    --white: #fff;
    --nude: #31251e;
    --gray: #9f9f9f;
+
+   --error: #f73939;
 }
 
 * {
@@ -295,6 +297,7 @@ h1.welcome-screen__heading {
 
 .booking-details-form__input-container {
    margin-block: 32px;
+   position: relative;
 }
 
 .booking-details-form__label {
@@ -334,6 +337,24 @@ h1.welcome-screen__heading {
    font-weight: 400;
    line-height: 21px; /* 116.667% */
    transition: border 0.2s;
+}
+
+.booking-details-form__input--error {
+   border: 2px solid var(--error);
+}
+
+.booking-details-form__error-label {
+   position: absolute;
+   bottom: -22px;
+
+   color: var(--error);
+
+   font-family: Roboto Mono;
+   font-size: 12px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: 16px; /* 133.333% */
+   letter-spacing: 0.36px;
 }
 
 .booking-details-form__input:focus {
