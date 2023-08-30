@@ -83,51 +83,51 @@ export const initWizard = () => {
             const email = document.querySelector('.booking-details-form__input--email');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            // const setError = (element, message) => {
-            //    const inputParent = element.parentElement;
-            //    const errorDisplay = inputParent.querySelector('.booking-details-form__error-label');
-            //    errorDisplay.innerText = message;
-            //    element.classList.add('booking-details-form__input--error');
-            // };
+            const setError = (element, message) => {
+               const inputParent = element.parentElement;
+               const errorDisplay = inputParent.querySelector('.booking-details-form__error-label');
+               errorDisplay.innerText = message;
+               element.classList.add('booking-details-form__input--error');
+            };
 
-            // const setSuccess = (element) => {
-            //    const inputParent = element.parentElement;
-            //    const errorDisplay = inputParent.querySelector('.booking-details-form__error-label');
-            //    errorDisplay.innerText = '';
-            //    element.classList.remove('booking-details-form__input--error');
-            // };
+            const setSuccess = (element) => {
+               const inputParent = element.parentElement;
+               const errorDisplay = inputParent.querySelector('.booking-details-form__error-label');
+               errorDisplay.innerText = '';
+               element.classList.remove('booking-details-form__input--error');
+            };
 
-            // const isValidEmail = (email) => emailRegex.test(email);
+            const isValidEmail = (email) => emailRegex.test(email);
 
-            // const validateInputs = () => {
-            //    let isValidForm = false;
+            const validateInputs = () => {
+               let isValidForm = false;
 
-            //    const commanderValue = commander.value.trim();
-            //    const emailValue = email.value.trim();
+               const commanderValue = commander.value.trim();
+               const emailValue = email.value.trim();
 
-            //    if (commanderValue === '') {
-            //       // alert('empty commander input');
-            //       setError(commander, 'Enter the commander name');
-            //    } else {
-            //       setSuccess(commander);
-            //       isValidForm = true;
-            //    }
+               if (commanderValue === '') {
+                  // alert('empty commander input');
+                  setError(commander, 'Enter the commander name');
+               } else {
+                  setSuccess(commander);
+                  isValidForm = true;
+               }
 
-            //    if (emailValue === '') {
-            //       setError(email, 'Enter the email address');
-            //       isValidForm = false;
-            //    } else if (!isValidEmail(emailValue)) {
-            //       setError(email, 'Enter the correct email address');
-            //       isValidForm = false;
-            //    } else {
-            //       setSuccess(email);
-            //       isValidForm = true;
-            //    }
+               if (emailValue === '') {
+                  setError(email, 'Enter the email address');
+                  isValidForm = false;
+               } else if (!isValidEmail(emailValue)) {
+                  setError(email, 'Enter the correct email address');
+                  isValidForm = false;
+               } else {
+                  setSuccess(email);
+                  isValidForm = true;
+               }
 
-            //    return isValidForm;
-            // };
+               return isValidForm;
+            };
 
-            // if (!validateInputs()) return;
+            if (!validateInputs()) return;
             commanderCredentials = {
                commander: commander.value.trim(),
                email: email.value.trim(),
