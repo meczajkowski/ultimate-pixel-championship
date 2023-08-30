@@ -41,7 +41,7 @@ export const welcomeScreen = () => {
 
    const welcomeStepImage = () => {
       const element = createElementWithAttributes('img', {
-         class: 'welcome-screen__image',
+         class: 'image image--welcome-screen',
          src: '../../assets/swords.png',
       });
       return element;

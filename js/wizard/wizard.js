@@ -142,6 +142,7 @@ export const initWizard = () => {
             console.log(commanderCredentials);
             sessionStorage.setItem('submitedFighter', JSON.stringify(commanderCredentials));
             sessionStorage.removeItem('activeFighter');
+            steps[2] = bookingConfirmationStep();
             currentStepIndex++;
             renderStep();
          }

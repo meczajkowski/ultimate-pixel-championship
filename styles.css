@@ -67,6 +67,18 @@ body {
    left: 1%;
 }
 
+.image {
+   display: block;
+}
+
+.image--welcome-screen {
+   margin: 27px auto 0;
+}
+
+.image--booking-confirmation-step {
+   margin: 48px auto;
+}
+
 #app {
    display: flex;
    align-items: center;
@@ -136,11 +148,6 @@ h1.welcome-screen__heading {
    font-size: 16px;
    line-height: 21px; /* 131.25% */
    margin: 19px 49px 56px;
-}
-
-.welcome-screen__image {
-   display: block;
-   margin: 27px auto 0;
 }
 
 /* Wizard screen */
@@ -353,4 +360,30 @@ h1.welcome-screen__heading {
 .booking-details-form__input:focus {
    outline: none;
    border: 2px solid var(--primary-color);
+}
+
+/* step 3 */
+.booking-confirmation__heading {
+   margin: 70px auto 0;
+   width: 250px;
+
+   text-align: center;
+   font-family: var(--font-primary);
+   font-size: 30px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 35px; /* 116.667% */
+}
+
+.booking-confirmation__info {
+   width: 259px;
+   margin-bottom: 50px;
+
+   text-align: center;
+   font-family: Roboto Mono;
+   font-size: 12px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: 16px; /* 133.333% */
+   letter-spacing: 0.36px;
 }
