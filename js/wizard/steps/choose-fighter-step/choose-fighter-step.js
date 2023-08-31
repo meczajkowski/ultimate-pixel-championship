@@ -150,6 +150,11 @@ export const chooseFighterStep = () => {
          if (activeFighter >= fighters.length - 1) return;
          activeFighter++;
          renderFighterProfile();
+         if (activeFighter == fighters.length - 1) {
+            element.remove();
+         } else if (activeFighter === 1) {
+            chooseFighterStepWrapper.append(chooseFighterStepPrevFighter());
+         }
       });
 
       return element;
@@ -166,6 +171,11 @@ export const chooseFighterStep = () => {
          if (activeFighter <= 0) return;
          activeFighter--;
          renderFighterProfile();
+         if (activeFighter === fighters.length - 2) {
+            chooseFighterStepWrapper.append(chooseFighterStepNextFighter());
+         } else if (activeFighter === 0) {
+            element.remove();
+         }
       });
 
       return element;
@@ -189,8 +199,8 @@ export const chooseFighterStep = () => {
    });
 
    renderFighterProfile();
-   chooseFighterStepWrapper.append(fightersContainer);
-   chooseFighterStepWrapper.append(chooseFighterStepNextFighter(), chooseFighterStepPrevFighter());
+   chooseFighterStepWrapper.append(fightersContainer, chooseFighterStepNextFighter());
+   // chooseFighterStepWrapper.append();
 
    return chooseFighterStepWrapper;
 };
