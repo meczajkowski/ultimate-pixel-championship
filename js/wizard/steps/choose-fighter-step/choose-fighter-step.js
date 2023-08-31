@@ -141,44 +141,54 @@ export const chooseFighterStep = () => {
 
    // Next Fighter navigation
    const chooseFighterStepNextFighter = () => {
-      const element = createElementWithAttributes('img', {
-         class: 'navigation-arrow navigation-arrow--right',
+      const arrow = createElementWithAttributes('img', {
          src: '../../../../assets/arrow.svg',
       });
 
-      element.addEventListener('click', () => {
+      const button = createElementWithAttributes('button', {
+         class: 'navigation-arrow navigation-arrow--right',
+      });
+
+      button.append(arrow);
+
+      button.addEventListener('click', () => {
          if (activeFighter >= fighters.length - 1) return;
          activeFighter++;
          renderFighterProfile();
          if (activeFighter == fighters.length - 1) {
-            element.remove();
+            button.remove();
          } else if (activeFighter === 1) {
             chooseFighterStepWrapper.append(chooseFighterStepPrevFighter());
          }
       });
 
-      return element;
+      return button;
    };
 
    // Prev Fighter navigation
    const chooseFighterStepPrevFighter = () => {
-      const element = createElementWithAttributes('img', {
-         class: 'navigation-arrow navigation-arrow--left',
+      const arrow = createElementWithAttributes('img', {
          src: '../../../../assets/arrow.svg',
       });
 
-      element.addEventListener('click', () => {
+      const button = createElementWithAttributes('button', {
+         class: 'navigation-arrow navigation-arrow--left',
+      });
+
+      button.append(arrow);
+
+      button.addEventListener('click', () => {
          if (activeFighter <= 0) return;
          activeFighter--;
          renderFighterProfile();
          if (activeFighter === fighters.length - 2) {
             chooseFighterStepWrapper.append(chooseFighterStepNextFighter());
          } else if (activeFighter === 0) {
-            element.remove();
+            button.remove();
          }
       });
 
-      return element;
+      return button;
    };
 
    const renderFighterProfile = () => {
