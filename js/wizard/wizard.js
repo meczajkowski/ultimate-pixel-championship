@@ -2,6 +2,7 @@ import { chooseFighterStep } from './steps/choose-fighter-step/choose-fighter-st
 import { bookingDetailsStep } from './steps/booking-details-step/booking-details-step.js';
 import { bookingConfirmationStep } from './steps/booking-confirmation-step/booking-confirmation-step.js';
 import { createElementWithAttributes } from '../helpers/createElementWithAttributes.js';
+import { fighters } from './steps/choose-fighter-step/fighters.js';
 
 export const initWizard = () => {
    let commanderCredentials;
@@ -147,7 +148,9 @@ export const initWizard = () => {
             };
             console.log(commanderCredentials);
             sessionStorage.setItem('submitedFighter', JSON.stringify(commanderCredentials));
-            sessionStorage.removeItem('activeFighter');
+            // sessionStorage.removeItem('activeFighter');
+            sessionStorage.setItem('activeFighter', JSON.stringify(fighters[0]));
+            steps[0] = chooseFighterStep();
             steps[2] = bookingConfirmationStep();
             currentStepIndex++;
             console.log(currentStepIndex);
