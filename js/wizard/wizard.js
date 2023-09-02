@@ -64,12 +64,18 @@ export const initWizard = () => {
 
    // Button Primary
    const wizardButtonPrimary = (title) => {
-      const element = createElementWithAttributes('a', {
+      const button = createElementWithAttributes('button', {
          class: 'button button--primary',
          textContent: title,
+      });
+      const element = createElementWithAttributes('a', {
          href: '#',
          onclick: 'route()',
+         type: 'button',
+         tabindex: -1,
       });
+
+      element.append(button);
 
       element.addEventListener('click', () => {
          if (currentStepIndex === maxSteps) return;
@@ -157,11 +163,18 @@ export const initWizard = () => {
    // Button Secondary
    const wizardButtonSecondary = () => {
       const element = createElementWithAttributes('a', {
-         class: 'button button--secondary',
-         textContent: 'Back',
          href: '#',
          onclick: 'route()',
+         type: 'button',
+         tabindex: -1,
       });
+
+      const button = createElementWithAttributes('button', {
+         class: 'button button--secondary',
+         textContent: 'Back',
+      });
+
+      element.append(button);
 
       element.addEventListener('click', () => {
          currentStepIndex = 0;

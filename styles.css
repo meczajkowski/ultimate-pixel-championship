@@ -21,6 +21,16 @@ body {
    background: #373737;
 }
 
+button {
+   background: transparent;
+   border: none;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}
+
 .button {
    cursor: pointer;
    display: block;
