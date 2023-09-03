@@ -42,7 +42,7 @@ export const welcomeScreen = () => {
    const welcomeStepImage = () => {
       const element = createElementWithAttributes('img', {
          class: 'image image--welcome-screen',
-         src: '../../../assets/swords.png',
+         src: 'https://meczajkowski.github.io/ultimate-pixel-championship/assets/swords.png',
       });
       return element;
    };
