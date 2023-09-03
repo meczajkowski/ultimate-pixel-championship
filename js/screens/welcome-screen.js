@@ -42,7 +42,7 @@ export const welcomeScreen = () => {
    const welcomeStepImage = () => {
       const element = createElementWithAttributes('img', {
          class: 'image image--welcome-screen',
-         src: '../../assets/swords.png',
+         src: '../../../assets/swords.png',
       });
       return element;
    };
