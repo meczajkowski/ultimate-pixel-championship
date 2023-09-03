@@ -5,7 +5,7 @@ export const welcomeScreen = () => {
       const element = createElementWithAttributes('a', {
          class: 'button button--primary',
          textContent: 'Choose',
-         href: '/wizard',
+         href: '/ultimate-pixel-championship/wizard',
          onclick: 'route()',
       });
       return element;

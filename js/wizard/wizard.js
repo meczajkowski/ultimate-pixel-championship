@@ -70,7 +70,7 @@ export const initWizard = () => {
          textContent: title,
       });
       const element = createElementWithAttributes('a', {
-         href: '#',
+         href: '',
          onclick: 'route()',
          type: 'button',
          tabindex: -1,
