@@ -73,6 +73,7 @@ a {
 
    background: transparent;
    border: none;
+   cursor: pointer;
 }
 
 .navigation-arrow--right {

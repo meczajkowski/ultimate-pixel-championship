@@ -15,8 +15,8 @@ export const route = (event) => {
 };
 
 const routes = {
-   '/': displayWelcomeScreen,
-   '/wizard': displayWizardScreen,
+   '/ultimate-pixel-championship/': displayWelcomeScreen,
+   '/ultimate-pixel-championship/wizard': displayWizardScreen,
 };
 
 const handleLocation = async () => {
@@ -24,7 +24,7 @@ const handleLocation = async () => {
 
    // Check if the path is unexpected
    if (!routes[path]) {
-      window.location.href = '/'; // Redirect to root path
+      window.location.href = '/ultimate-pixel-championship/'; // Redirect to root path
       return;
    }
 
