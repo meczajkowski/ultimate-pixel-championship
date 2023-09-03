@@ -30,7 +30,9 @@ export const initWizard = () => {
          for (let i = 0; i < maxSteps; i++) {
             const element = createElementWithAttributes('img', {
                class: 'wizard-progress-bar__step-icon',
-               src: `../../../../assets/step-icon-${currentStepIndex >= i ? 'active' : 'nude'}.svg`,
+               src: `https://meczajkowski.github.io/ultimate-pixel-championship/assets/step-icon-${
+                  currentStepIndex >= i ? 'active' : 'nude'
+               }.svg`,
             });
             icons.push(element);
          }

@@ -142,7 +142,7 @@ export const chooseFighterStep = () => {
    // Next Fighter navigation
    const chooseFighterStepNextFighter = () => {
       const arrow = createElementWithAttributes('img', {
-         src: '../../../../assets/arrow.svg',
+         src: 'https://meczajkowski.github.io/ultimate-pixel-championship/assets/arrow.svg',
       });
 
       const button = createElementWithAttributes('button', {
@@ -168,7 +168,7 @@ export const chooseFighterStep = () => {
    // Prev Fighter navigation
    const chooseFighterStepPrevFighter = () => {
       const arrow = createElementWithAttributes('img', {
-         src: '../../../../assets/arrow.svg',
+         src: 'https://meczajkowski.github.io/ultimate-pixel-championship/assets/arrow.svg',
       });
 
       const button = createElementWithAttributes('button', {

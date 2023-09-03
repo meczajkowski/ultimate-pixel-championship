@@ -13,7 +13,7 @@ const confirmationHeading = () => {
 const image = () => {
    const element = createElementWithAttributes('img', {
       class: 'image image--booking-confirmation-step',
-      src: '../../assets/swords.png',
+      src: 'https://meczajkowski.github.io/ultimate-pixel-championship/assets/swords.png',
    });
    return element;
 };

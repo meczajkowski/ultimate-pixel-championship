@@ -5,7 +5,8 @@ export const fighters = [
       attack: '14 - 18',
       special: 'Passive Aggresiveness',
       weakness: 'Logical thinking',
-      imageUrl: '../../../../assets/annoyed-karen.png',
+      imageUrl:
+         'https://meczajkowski.github.io/ultimate-pixel-championship/assets/annoyed-karen.png',
    },
    {
       name: 'Mad Suzie',
@@ -13,7 +14,7 @@ export const fighters = [
       attack: '12 - 18',
       special: 'Fist Punch',
       weakness: 'Pink color',
-      imageUrl: '../../../../assets/mad-suzie.png',
+      imageUrl: 'https://meczajkowski.github.io/ultimate-pixel-championship/assets/mad-suzie.png',
    },
    {
       name: 'Jenny Wick',
@@ -21,7 +22,7 @@ export const fighters = [
       attack: '22 - 24',
       special: 'Pencil Stab',
       weakness: 'Contrast',
-      imageUrl: '../../../../assets/jenny-wick.png',
+      imageUrl: 'https://meczajkowski.github.io/ultimate-pixel-championship/assets/jenny-wick.png',
    },
    {
       name: 'Purple Pie',
@@ -29,7 +30,7 @@ export const fighters = [
       attack: '9 - 12',
       special: 'Roasting',
       weakness: 'Sunscreen',
-      imageUrl: '../../../../assets/purple-pie.png',
+      imageUrl: 'https://meczajkowski.github.io/ultimate-pixel-championship/assets/purple-pie.png',
    },
    {
       name: 'Pale Lora',
@@ -37,7 +38,7 @@ export const fighters = [
       attack: '15 - 16',
       special: 'Bleach Splash',
       weakness: 'Candy Cotton',
-      imageUrl: '../../../../assets/pale-lora.png',
+      imageUrl: 'https://meczajkowski.github.io/ultimate-pixel-championship/assets/pale-lora.png',
    },
    {
       name: 'Ivy Irene',
@@ -45,6 +46,6 @@ export const fighters = [
       attack: '10 - 14',
       special: 'Potion Pill',
       weakness: 'Broccoli',
-      imageUrl: '../../../../assets/ivy-irene.png',
+      imageUrl: 'https://meczajkowski.github.io/ultimate-pixel-championship/assets/ivy-irene.png',
    },
 ];
