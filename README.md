@@ -15,7 +15,7 @@ This project presents a well-structured and engaging user registration experienc
 ## Demo
 
 See the project live here:
-https://meczajkowski.github.io/ultimate-pixel-championship/
+[https://meczajkowski.github.io/ultimate-pixel-championship/](https://ultimate-pixel-championship.netlify.app/)
 
 ## Tech Stack
 

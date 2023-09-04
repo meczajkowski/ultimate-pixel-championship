@@ -91,6 +91,7 @@ export const initWizard = () => {
             // form validation start
             const commander = document.querySelector('.booking-details-form__input--text');
             const email = document.querySelector('.booking-details-form__input--email');
+            const commanderRegex = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]{2,15}$/;
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             const setError = (element, message) => {
@@ -107,6 +108,7 @@ export const initWizard = () => {
                element.classList.remove('booking-details-form__input--error');
             };
 
+            const isValidCommander = (commander) => commanderRegex.test(commander);
             const isValidEmail = (email) => emailRegex.test(email);
 
             const validateInputs = () => {
@@ -118,6 +120,10 @@ export const initWizard = () => {
                // A check to see if the inputs are empty before allowing submission.
                if (commanderValue === '') {
                   setError(commander, 'Enter the commander name');
+                  isValidForm = false;
+               } else if (!isValidCommander(commanderValue)) {
+                  setError(commander, 'Enter 2 - 15 letters only');
+                  isValidForm = false;
                } else {
                   setSuccess(commander);
                   isValidForm = true;
@@ -137,6 +143,7 @@ export const initWizard = () => {
                   isValidForm = true;
                }
 
+               isValidForm = isValidCommander(commanderValue) && isValidEmail(emailValue);
                return isValidForm;
             };
 
